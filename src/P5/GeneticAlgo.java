@@ -1,7 +1,7 @@
 package P5;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 
@@ -118,11 +118,11 @@ public class GeneticAlgo {
         }
     }
 
-    public static void runGA() {
+    public static void runGA() throws IOException {
 
         //create a population object and parameters
         GeneticAlgo ga = new GeneticAlgo();
-        int numGeneration = 1000;
+        int numGeneration = 30;
         int popSize = 10;
         double crossOverRate = 0.1;
         double mutationRate = 0.1;
@@ -178,17 +178,18 @@ public class GeneticAlgo {
             //pop.printPop();
 
             String fileName = "C:\\Gen\\"+gen+".csv";
-
+            String average = "C:\\Gen\\avg"+gen+".csv";
+            Data.writeAverage(average, pop);
             Data.writeResult(fileName, pop);
 
         }
         System.out.println("====Result====");
         pop.printPop();
         finalFitness = pop.population.get(0).fitness;
-        System.out.println(finalFitness);
+        System.out.println("\nFinal fitness: "+finalFitness);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         runGA();
     }
 

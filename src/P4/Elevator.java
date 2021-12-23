@@ -31,13 +31,12 @@ public class Elevator {
 
                 System.out.println("Mean: "+mean/floors.length);
                 int length = floors.length;
-                System.out.println("Duration : "+minTime(length, floors));
+                System.out.println("Duration for MyAlgo: "+minTime(length, floors) + " Seconds");
 
                 System.out.println("The elevator will go to these floors : " + levelList);
                 try {
                     FIFO(levelList);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -66,7 +65,7 @@ public class Elevator {
             System.out.println("\nYou have arrived level " + currentLevel);
             floors.removeFirst();
         }
-        System.out.println("Duration : " + time + " seconds");
+        System.out.println("Duration for FIFO : " + time + " seconds");
     }
 
 

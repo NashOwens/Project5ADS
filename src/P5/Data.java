@@ -1,14 +1,13 @@
 package P5;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.ArrayList;
 
 
 
 public class Data {
+
+    static ArrayList<Double> avr = new ArrayList<>();
 
     public static ArrayList<Double> readFile (String fileName){
 
@@ -33,6 +32,27 @@ public class Data {
             System.err.print("Error");
         }
         return res;
+    }
+
+    public static void writeAverage(String file, GeneticAlgo.Population result) {
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            double average = 0;
+
+            for (int i = 0; i < result.population.size(); i++) {
+                average += result.population.get(i).fitness;
+            }
+            String res;
+            res = Double.toString((average/result.population.size()));
+            avr.add(average/result.population.size());
+            System.out.println(avr);
+            bw.write(res);
+            bw.close();
+            fw.close();
+        } catch(Exception e) {
+        System.err.print("Error");
+        }
     }
 
     public static void writeResult(String file, GeneticAlgo.Population result) {

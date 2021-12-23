@@ -15,7 +15,7 @@ public class PascalsTriangle {
         System.out.println("\nSelect Sort: " + Arrays.toString(selectArray));
         System.out.println("\nBubble Sort: " + Arrays.toString(bubbleArray));
         System.out.println("\nShell Sort: " + Arrays.toString(shellArray));
-        aPascalTriangle(30);
+        aPascalTriangle(150);
     }
 
     public static int[] insertionSort(int[] A, int n) {
